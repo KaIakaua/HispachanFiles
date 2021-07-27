@@ -8,6 +8,10 @@
 
 .flex {
     display: flex;
+
+    img {
+        align-self: flex-start;
+    }
 }
  
 #mainMenu
