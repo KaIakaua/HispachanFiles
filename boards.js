@@ -79,6 +79,10 @@ const boards = [
             board: 'ch',
             title: 'Historias y Consejos',
         },
+         {
+            board: 'ham',
+            title: 'Animales',
+        },
         {
             board: 'di',
             title: 'Dibujo y Arte',
