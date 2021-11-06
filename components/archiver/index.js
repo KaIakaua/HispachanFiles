@@ -132,12 +132,19 @@ class Archiver {
             await fs.access(filePath);
         } catch (e) {
             // Descargar archivo
-            const response = await axios.get(
-                encodeURI(post.file.url),
-                { responseType: 'arraybuffer' },
-            );
-            await fs.writeFile(filePath, response.data);
-            post.file.md5 = md5(response.data);
+            try {
+                const response = await axios.get(
+                    encodeURI(post.file.url),
+                    { responseType: 'arraybuffer' },
+                );
+                await fs.writeFile(filePath, response.data);
+                post.file.md5 = md5(response.data);
+
+            } catch (e) {
+                if (e.response.status !== 404) {
+                    throw e;
+                }
+            }
         }
 
         // Establecer nueva ubicación
