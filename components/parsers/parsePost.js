@@ -121,8 +121,8 @@ function postMeta(post) {
     data.message = post.find('blockquote').first().text().trim().replace(/(\r\n|\r)/gm, '\n');
 
     // Archivo
-    if (post.children('.filesize').length >= 1 || post.find('.activa').children('.filesize').length >= 1) {
-        const fileInfo = post.find('.filesize').first();
+    if (post.find('.filesize').length >= 1) {
+        const fileInfo = post.find('.file-info-container').first();
         const fileMeta = fileInfo.children('span[style^="font-size"]').first();
         const fileMetaR = fileMeta.text().replace(/(\r\n|\n|\r|[()])/gm, '').split(',');
         const fileSize = fileMetaR[0].trim();
