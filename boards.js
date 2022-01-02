@@ -72,6 +72,10 @@ const boards = [
             title: 'Animación y Cómics',
         },
         {
+            board: 'art',
+            title: 'Arte',
+        },
+        {
             board: 'b',
             title: 'Balcón',
         },
