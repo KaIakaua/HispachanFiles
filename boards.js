@@ -42,12 +42,12 @@ const boards = [
             title: 'Meta',
         },
         {
-            board: 'pol',
-            title: 'Gaceta Política',
-        },
-        {
             board: 'pl',
             title: 'Plaza',
+        },
+        {
+            board: 'pol',
+            title: 'Gaceta Política',
         },
         {
             board: 'q',
@@ -79,7 +79,7 @@ const boards = [
             board: 'ch',
             title: 'Historias y Consejos',
         },
-         {
+        {
             board: 'ham',
             title: 'Animales',
         },
