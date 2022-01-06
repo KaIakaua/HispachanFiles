@@ -79,15 +79,17 @@ function postMeta(post) {
 
     // Fecha y Hora
     const dateRe    = /(\d{1,2})\/(\d{1,2})\/(\d{1,2}) (\d{1,2}):(\d{1,2})/;
-    const dateParts = post.find('.timer a')[0].attribs['data-date'].trim().match(dateRe);
-    const date      = new Date(Date.UTC(
-        parseInt('20' + dateParts[3]),
-        parseInt(dateParts[2]) - 1,
-        parseInt(dateParts[1]),
-        parseInt(dateParts[4]),
-        parseInt(dateParts[5]),
-    ));
-    data.date = date;
+    const dateParts = post.find('.timer a').first().attr('data-date').trim().match(dateRe);
+    if (dateParts !== null) {
+        const date      = new Date(Date.UTC(
+            parseInt('20' + dateParts[3]),
+            parseInt(dateParts[2]) - 1,
+            parseInt(dateParts[1]),
+            parseInt(dateParts[4]),
+            parseInt(dateParts[5]),
+        ));
+        data.date = date;
+    }
 
     // Nuevo dado [Abril 2016]
     const dC = post.find('blockquote').first().find('span.dado');
