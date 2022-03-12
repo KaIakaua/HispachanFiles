@@ -1,5 +1,6 @@
 'use strict';
 const Post = require('../models/post');
+const BannedThread = require('../models/bannedThread');
 const fs = require('fs/promises');
 
 /**
@@ -35,6 +36,9 @@ const deletePost = async post => {
     await Post.findOneAndRemove({ postId: post.postId, board: post.board });
     // Eliminar carpeta
     await fs.rmdir(`data/${post.board}/${post.postId}`, { recursive: true });
+    // Banear hilo
+    const bannedThread = new BannedThread({ postId: post.postId, board: post.board });
+    await bannedThread.save();
 };
 
 module.exports = deletePost;

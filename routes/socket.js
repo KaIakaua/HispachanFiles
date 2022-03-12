@@ -52,7 +52,7 @@ module.exports = socket => {
         }
 
         // Verificar que el hilo cumpla con los requistos
-        const testResult = thTest(thread);
+        const testResult = await thTest(thread);
         if (testResult) {
             socket.emit('queueFailed', testResult);
             return;
