@@ -6,35 +6,39 @@ block content
     .ui.segment
       form.ui.form
         .field
-          input(name='q', type='text', placeholder='Termino de búsqueda')
+        - var query = formDataObj.q
+          input(name='q', type='text', placeholder='Termino de búsqueda', value=query)
         .field
           label Solo buscar en los siguientes tablones
+          - var boards = formDataObj.boards // Algo mas corto. Un poco mas bonito.
           select.ui.dropdown(multiple, name='boards')
             each board in allowList
-              option(value=board)= board
+              option(value=board, selected=(boards) ? boards.includes(board) : false)= board
         .inline.fields
           label Solo
           .field
+          - var op = (formDataObj.op) ? true : false
             .ui.toggle.checkbox
-              input(name='op', value='true', type='checkbox')
+              input(name='op', value='true', type='checkbox', checked=op)
               label OPs
         .inline.fields
           label Solo posts con archivos
+          - var exts = formDataObj.extensions // Extensiones.
           .field
             .ui.toggle.checkbox
-              input(name='extensions', value='mp4', type='checkbox')
+              input(name='extensions', value='mp4', type='checkbox', checked=(exts) ? exts.includes('mp4') : false)
               label mp4
           .field
             .ui.toggle.checkbox
-              input(name='extensions', value='webm', type='checkbox')
+              input(name='extensions', value='webm', type='checkbox', checked=(exts) ? exts.includes('webm') : false)
               label webm
           .field
             .ui.toggle.checkbox
-              input(name='extensions', value='img', type='checkbox')
+              input(name='extensions', value='img', type='checkbox', checked=(exts) ? exts.includes('img') : false)
               label jpg/png/gif
           .field
             .ui.toggle.checkbox
-              input(name='extensions', value='pdf', type='checkbox')
+              input(name='extensions', value='pdf', type='checkbox', checked=(exts) ? exts.includes('pdf') : false)
               label pdf
         button.ui.button(type='submit') Buscar
     h1 Resultados de la búsqueda: #{q}

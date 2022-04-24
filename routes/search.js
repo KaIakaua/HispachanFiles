@@ -114,6 +114,7 @@ router.get('/search', async (req, res) => {
         title: `Resultados de búsqueda ${q} - ${publicSettings.site.title}`,
         settings: publicSettings,
         allowList: allowList.filter(x => x !== 'all'),
+        formDataObj: req.query,
         q, currentQuery, totalPages, items, pages, renderer,
     });
 });
