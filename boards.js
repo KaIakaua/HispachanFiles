@@ -42,6 +42,10 @@ const boards = [
             title: 'Meta',
         },
         {
+            board: 'na',
+            title: 'Naturaleza',
+        },
+        {
             board: 'pl',
             title: 'Plaza',
         },
