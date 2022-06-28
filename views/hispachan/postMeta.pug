@@ -10,7 +10,7 @@ label
   //- Bandera si es un board regional
   if post.flag
     span &nbsp;
-    img.bandera(src=post.flag, alt=post.posterCountry, title=post.posterCountryName)
+    img.bandera(src=post.flag.substring(32), alt=post.posterCountry, title=post.posterCountryName)
   if post.posterName
     span.postername= ' ' + post.posterName
   //- ID anónimo
