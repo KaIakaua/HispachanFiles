@@ -11,6 +11,10 @@ const boards = [
             board: 'all',
             title: 'Todos los hilos',
         },
+        {
+            board: 'search',
+            title: 'Búsqueda Avanzada',
+        },
     ],
     [
         {
