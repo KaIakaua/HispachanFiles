@@ -110,7 +110,7 @@ app.use((error, req, res, next) => {
         return;
     }
 
-    res.render('error', {
+    res.status(error.status || 500).render('error', {
         title: `Error - ${settings.site.title}`,
         settings, error,
     });
