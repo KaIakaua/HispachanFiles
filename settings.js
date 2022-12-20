@@ -23,6 +23,8 @@ module.exports =
         // Es importante que configures esto ya que es usado en varias partes.
         // Si usas https://, necesitas configurar un certificado en server-settings.js
         url: 'http://localhost:8000',
+        // URl de archivos estáticos
+        staticUrl: 'http://localhost:8000',
     },
 
     /* Características del sitio */
