@@ -88,7 +88,7 @@ class HispachanFiles {
             const hB = document.getElementById('hispaBox');
             const th = new Thread(hB.getAttribute('hf-board'), hB.getAttribute('hf-id'));
             this.threadControl = th;
-            th.setEvents();
+            // th.setEvents();
 
             // Evento para la descarga de un hilo
             const downloadBtn = document.getElementById('downloadBtn');
