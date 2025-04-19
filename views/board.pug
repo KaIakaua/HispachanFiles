@@ -7,6 +7,23 @@ block content
     if items.length < 1
       center: h2 No hay resultados
     .ui.items#searchResults(ng-cloak)
+    .ui.segment
+      h2 Crear nuevo hilo
+      form#postForm.ui.form
+        .field
+          label Título
+          input(type='text', name='subject')
+        .field
+          label Mensaje
+          textarea(name='message')
+        .field
+          label Archivo
+          input(type='file', name='file')
+        button.ui.button(type='submit') Publicar
+      .ui.items#postsContainer
+        // Posts aparecerán aquí
+      // Include existing components
+      include components/intergram
       each item in items
         a.item(href='/'+item.board+'/res/'+item.postId+'.html')
           .image
@@ -23,7 +40,7 @@ block content
                 | {{'#{item.date.toISOString()}' | moment 'DD/MM/YY HH:mm'}}
             .description: p= item.message.substr(0, 256)
             .extra Archivado por última vez {{'#{item.lastUpdate.toISOString()}' | moment 'DD/MM/YY HH:mm'}}
-    //- Páginas
+    // Páginas
     center
       if totalPages > 1
         .ui.pagination.menu.inverted
@@ -32,3 +49,6 @@ block content
               a(class=page.active?'item active':'item', href=page.path+'?p='+page.num) #{page.text || page.num}
             if page.type == 'divider'
               .item ...
+  
+  // Include JavaScript file for form handling
+  script(src='/js/board.js')

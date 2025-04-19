@@ -18,6 +18,24 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/threads', (req, res) => {
+    const { subject, message, board, file }= req.body;
+    const newThread = {
+        subject,
+        message,
+        board,
+        file,
+        createdAt: new Date(),
+    };
+    
+    saveThread(newThread, (error, saveThread) => {
+        if (error) {
+            return res.status(500).json({ error: 'Failed to save thread' });
+        }
+        res.redirect('/board/${board}');
+    })
+})
+
 router.use('/hispafiles', hispafiles);
 router.use('/hispachan', hispachan);
 router.use('/hispasexy', hispasexy);

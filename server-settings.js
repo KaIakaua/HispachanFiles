@@ -10,8 +10,8 @@ module.exports =
     /* Base de datos */
     db:
     {
-        url: 'mongodb://localhost/hispaFiles',
-        testUrl: 'mongodb://localhost/hispaFilesTest',
+        url: 'mongodb://127.0.0.1/hispaFiles',
+        testUrl: 'mongodb://127.0.0.1/hispaFilesTest',
     },
 
     /* HTTPS */

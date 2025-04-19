@@ -8,6 +8,41 @@ const serverSettings = require('../server-settings');
 const Post = require('../models/post');
 const deletePost = require('../components/deletePost');
 
+let posts = [];
+
+router.post('/', async (req, res) => {
+    const { board, subject, message, anonId, file } = req.body;
+
+    if (!subject || !message) {
+        return res.status(400).json({ error: 'Subject and message are required, res status' });
+    }
+
+    const postId = posts.lenght + 1;
+
+    const newPost = new Post({
+        admin: false,
+        anonId: anonId || 'Anonymous',
+        board: board,
+        date: new Date(),
+        file: file || null,
+        message: message,
+        postId: postId,
+        replies: [],
+        subject: subject,
+        thread: null,
+        replyCount: 0,
+    })
+
+    posts.push(newPost);
+
+    res.status(201).json(newPost)
+
+})
+
+
+
+
+
 router.get('/:board/res/:postId', async (req, res, next) => {
     // CloudFlare server push
     res.set('Link', '</dist/app.min.js>; rel=preload, </semantic/semantic.min.css>; rel=prefetch, </stylesheets/css/nprogress.css>; rel=prefetch, </semantic/semantic.js>; rel=prefetch');
