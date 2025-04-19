@@ -6,4 +6,7 @@
         "**/dist": true
 	},
 	"files.eol": "\n",
+	"githubPullRequests.ignoredPullRequestBranches": [
+		"master"
+	],
 }

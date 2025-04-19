@@ -81,9 +81,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/', routes);
+
 app.use('/', threadRoutes);
 app.use('/', searchRoutes);
+app.use('/', routes);
 if (settings.features.apiEnabled) {
     app.use('/api', apiRoutes);
 }

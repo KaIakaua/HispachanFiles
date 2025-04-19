@@ -2,6 +2,7 @@ extends layout
 block metaTags
   meta(name='description', content=settings.site.description)
 block content
+
   .ui.container.c-container
     include components/nav-mobile
     include components/nav-desktop
@@ -10,6 +11,19 @@ block content
         | #{settings.site.title} permite guardar hilos de 
         a(href='https://www.'+settings.target+'.org/') #{settings.target}.org
         |.
+      // Hilos almacenados
+      h2(style='margin-top: 2em') Hilos almacenados localmente
+      each post in posts || []
+        .post
+          if post.subject
+            h3= post.subject
+          else
+            h3 (Sin asunto)
+          p= post.message
+          small= post.date
+          p #{post.replyCount || 0} respuestas
+        if posts.length === 0
+          p No posts available.
       .ui.icon.input(style='width: 100%;', v-bind:class='archiver.working ? ["disabled", "loading"] : []')
         input(placeholder='Introduce una URL de '+capitalize(settings.target), type='text', v-model='archiver.url', :disabled='archiver.working')
         i.icon.save.link#saveBtn(v-bind:class='archiver.working ? [] : ["inverted", "circular"]')              
